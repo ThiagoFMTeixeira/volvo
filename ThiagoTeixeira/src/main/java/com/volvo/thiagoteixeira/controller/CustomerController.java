@@ -17,6 +17,11 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+    @GetMapping(value = "/addresses/{zipCode}")
+    public ResponseEntity<List<CustomerModel>> getCustomersByZipCode(final @PathVariable String zipCode) {
+        return ResponseEntity.ok(customerService.getCustomersByZipCode(zipCode));
+    }
+
     @GetMapping
     public ResponseEntity<List<CustomerModel>> getCustomers() {
         return ResponseEntity.ok(customerService.getCustomers());

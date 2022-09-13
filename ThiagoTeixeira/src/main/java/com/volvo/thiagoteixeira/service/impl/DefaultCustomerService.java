@@ -27,6 +27,16 @@ public class DefaultCustomerService implements CustomerService {
     private AddressValidator addressValidator;
 
     @Override
+    public List<CustomerModel> getCustomersByZipCode(final String zipCode) {
+        try {
+            return customerDao.findCustomersByZipCode(zipCode);
+        } catch (final Exception ex) {
+            log.error(String.format(ERROR_MESSAGE_UNEXPECTED, "list customers"), ex);
+            return new LinkedList<>();
+        }
+    }
+
+    @Override
     public List<CustomerModel> getCustomers() {
         try {
             return customerDao.findAll();

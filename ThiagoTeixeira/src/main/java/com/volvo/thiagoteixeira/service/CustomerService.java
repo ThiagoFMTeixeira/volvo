@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface CustomerService {
 
+    List<CustomerModel> getCustomersByZipCode(String zipCode);
+
     List<CustomerModel> getCustomers();
 
     CustomerModel getCustomer(String document);
